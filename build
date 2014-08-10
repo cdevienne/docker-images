@@ -1,4 +1,4 @@
 #!/bin/bash
-SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+BUILD_DIR="$( cd "$( dirname "$0" )" && pwd )/$1"
 
-docker build -t="marclennox/$1" "${BUILD_DIR}/$1"
+docker build -t="marclennox/$1" "${BUILD_DIR}"
