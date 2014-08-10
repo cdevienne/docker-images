@@ -66,7 +66,7 @@ RUN \
 
 # Install ruby gems.
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
-RUN gem install awesome_print bundler
+RUN gem install awesome_print bundler rubygems-update
 
 # Setup ruby and gem config.
 RUN \
