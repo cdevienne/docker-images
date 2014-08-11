@@ -65,17 +65,7 @@ RUN \
   rm -rf /tmp/ruby-*
 
 # Install ruby gems.
-RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
-RUN gem install awesome_print bundler rubygems-update
-
-# Setup ruby and gem config.
-RUN \
-  echo "require 'awesome_print'" > ~/.irbrc && \
-  echo "" > ~/.irbrc && \
-  echo "require 'AwesomePrint.irb!'" >> ~/.irbrc && \
-  echo "" > ~/.irbrc && \
-  echo "IRB.conf[:SAVE_HISTORY] = 100" >> ~/.irbrc && \
-  echo "IRB.conf[:HISTORY_FILE] = \"#{ENV['HOME']}/.irb-history\"" >> ~/.irbrc
+RUN gem install bundler rubygems-update --no-ri --no-rdoc
 
 # Define mountable directories.
 VOLUME ["/data"]
