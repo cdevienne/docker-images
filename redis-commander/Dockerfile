@@ -1,7 +1,7 @@
 #
 # Redis Commander Dockerfile
 #
-# http://github.com/marclennox/docker-images
+# http://github.com/marclennox/docker-images/redis-commander
 #
 
 # Pull base image.

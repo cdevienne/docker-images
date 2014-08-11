@@ -1,7 +1,7 @@
 #
-# Rails App Dockerfile
+# Rails App Base Dockerfile
 #
-# http://github.com/marclennox/docker-images
+# http://github.com/marclennox/docker-images/rails-app-base
 #
 
 # Pull base image.
