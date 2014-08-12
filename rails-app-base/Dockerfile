@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM ubuntu:trusty
+FROM debian:wheezy
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
