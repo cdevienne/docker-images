@@ -16,9 +16,8 @@ ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /tmp
 
 # Install base packages.
-RUN \
-  apt-get update && \
-  apt-get -y install \
+RUN apt-get update
+RUN apt-get -y install \
     build-essential \
     curl \
     git-core \
@@ -57,7 +56,7 @@ RUN \
   CXX="g++ -Wno-unused-local-typedefs" make && \
   CXX="g++ -Wno-unused-local-typedefs" make install && \
   cd .. && \
-  rm -rf ./node-v*
+  rm -rf node-v*
 
 # Compile ruby from source.
 RUN \
@@ -69,7 +68,7 @@ RUN \
   make && \
   make install && \
   cd .. && \
-  rm -rf ./ruby-*
+  rm -rf ruby-*
 
 # Install ruby gems.
 RUN gem install bundler rubygems-update --no-ri --no-rdoc

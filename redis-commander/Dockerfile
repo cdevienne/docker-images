@@ -13,13 +13,14 @@ MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages.
-RUN \
-  apt-get update && \
-  apt-get install -y python python-dev python-pip python-virtualenv wget
+RUN apt-get update
+RUN apt-get install -y python python-dev python-pip python-virtualenv wget
+
+# Define working directory.
+WORKDIR /tmp
 
 # Compile node from source.
 RUN \
-  cd /tmp && \
   wget http://nodejs.org/dist/node-latest.tar.gz && \
   tar xvzf node-*.tar.gz && \
   rm -f node-*.tar.gz && \
@@ -27,8 +28,8 @@ RUN \
   ./configure && \
   CXX="g++ -Wno-unused-local-typedefs" make && \
   CXX="g++ -Wno-unused-local-typedefs" make install && \
-  cd /tmp && \
-  rm -rf /tmp/node-v*
+  cd .. && \
+  rm -rf node-v*
 
 # Install node packages.
 RUN npm install -g redis-commander
