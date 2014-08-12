@@ -65,7 +65,7 @@ RUN \
   tar -xzvf ruby-*.tar.gz && \
   rm -f ruby-*.tar.gz && \
   cd ruby-* && \
-  ./configure && \
+  ./configure --disable-install-doc && \
   make && \
   make install && \
   cd .. && \
