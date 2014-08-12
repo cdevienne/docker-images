@@ -23,7 +23,6 @@ RUN \
     curl \
     git-core \
     libcurl4-openssl-dev \
-    libpq-dev \
     libreadline-dev \
     libssl-dev \
     libsqlite3-dev \
@@ -46,7 +45,7 @@ RUN \
   wget https://www.postgresql.org/media/keys/ACCC4CF8.asc && \
   apt-key add ACCC4CF8.asc && \
   apt-get update && \
-  apt-get -y install postgresql-client-9.3 postgreql-contrib-9.3
+  apt-get -y install libpq-dev postgresql-client-9.3 postgresql-contrib-9.3
 
 # Compile node from source.
 RUN \
