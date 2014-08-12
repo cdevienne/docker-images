@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build -t="marclennox/rails-app-base" "$( cd "$( dirname "$0" )" && pwd )"
