@@ -1,4 +1,5 @@
 #!/bin/bash
 
-rails-app-base/build
-redis-commander/build
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+"${SCRIPT_DIR}/rails-app-base/build"
+"${SCRIPT_DIR}/redis-commander/build"
