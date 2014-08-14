@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rails-app-base/build
+redis-commander/build
