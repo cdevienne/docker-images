@@ -1,5 +1,5 @@
 #
-# Redis Commander Dockerfile
+# Redis commander dockerfile
 #
 # http://github.com/marclennox/docker-images/redis-commander
 #

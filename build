@@ -1,5 +1,6 @@
 #!/bin/bash
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+"${SCRIPT_DIR}/backup-service/build"
 "${SCRIPT_DIR}/rails-app-base/build"
 "${SCRIPT_DIR}/redis-commander/build"

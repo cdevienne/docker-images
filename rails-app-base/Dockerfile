@@ -1,5 +1,5 @@
 #
-# Rails App Base Dockerfile
+# Rails application base dockerfile
 #
 # http://github.com/marclennox/docker-images/rails-app-base
 #
