@@ -26,8 +26,18 @@ RUN apt-get -y install \
     libxml2-dev \
     libxslt1-dev \
     libyaml-dev \
+    mysql-client \
+    sqlite3 \
     wget \
     zlib1g-dev
+
+# Add postgresql client from official source.
+RUN \
+  echo "deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+  wget https://www.postgresql.org/media/keys/ACCC4CF8.asc && \
+  apt-key add ACCC4CF8.asc && \
+  apt-get update && \
+  apt-get -y install libpq-dev postgresql-client-9.3 postgresql-contrib-9.3
 
 # Define working directory.
 WORKDIR /tmp
