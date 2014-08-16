@@ -19,6 +19,7 @@ RUN \
 
 # Transform configurations.
 RUN \
+  sed -i -r 's/^(\s*[;]?\s*cgi\.fix_pathinfo\s*[=].*)$/; \1\ncgi.fix_pathinfo=0/' /etc/php5/fpm/php.ini && \
   sed -i -r 's/^(\s*[;]?\s*error_log\s*[=].*)$/; \1\nerror_log = error.log/' /etc/php5/fpm/php-fpm.conf && \
   sed -i -r 's/^(\s*[;]?\s*daemonize\s*[=].*)$/; \1\ndaemonize = no/' /etc/php5/fpm/php-fpm.conf && \
   sed -i -r 's/^(\s*[;]?\s*user\s*[=].*)$/; \1\nuser = root/' /etc/php5/fpm/pool.d/www.conf && \
