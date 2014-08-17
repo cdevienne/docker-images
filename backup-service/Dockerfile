@@ -30,6 +30,7 @@ RUN apt-get -y install \
     sqlite3 \
     wget \
     zlib1g-dev
+RUN rm -f /etc/cron.daily/*
 
 # Add postgresql client from official source.
 RUN \
