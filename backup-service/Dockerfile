@@ -4,19 +4,29 @@
 # http://github.com/marclennox/docker-images/backup-service
 #
 
-# Pull base image.
-FROM debian:wheezy
+# Use phusion/baseimage as base image. To make your builds reproducible, make
+# sure you lock down to a specific version, not to `latest`!
+# See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
+# a list of version numbers.
+FROM phusion/baseimage:latest
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
 # Set environment.
 ENV DEBIAN_FRONTEND noninteractive
 
+# Regenerate SSH host keys. baseimage-docker does not contain any, so you
+# have to do that yourself. You may also comment out this instruction; the
+# init system will auto-generate one during boot.
+RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
+
+# Remove OS cron jobs
+RUN rm -f /etc/cron.daily/*
+
 # Install base packages.
 RUN apt-get update
 RUN apt-get -y install \
     build-essential \
-    cron \
     curl \
     git-core \
     libcurl4-openssl-dev \
@@ -30,7 +40,6 @@ RUN apt-get -y install \
     sqlite3 \
     wget \
     zlib1g-dev
-RUN rm -f /etc/cron.daily/*
 
 # Add postgresql client from official source.
 RUN \
@@ -46,8 +55,8 @@ RUN \
   tar -xzvf redis-*.tar.gz && \
   rm -f redis-*.tar.gz && \
   cd redis-* && \
-  make redis-cli && \
-  make install redis-cli && \
+  make && \
+  make install && \
   cd .. && \
   rm -rf redis-*
 
@@ -77,3 +86,6 @@ WORKDIR /data
 
 # Define mountable directories.
 VOLUME ["/data"]
+
+# Use baseimage-docker's init system.
+CMD ["/sbin/my_init"]
