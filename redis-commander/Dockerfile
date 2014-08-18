@@ -34,6 +34,9 @@ RUN \
 # Install node packages.
 RUN npm install -g redis-commander
 
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Define mountable directories.
 VOLUME ["/data"]
 

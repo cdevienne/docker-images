@@ -73,6 +73,9 @@ RUN \
 # Install ruby gems.
 RUN gem install bundler rubygems-update --no-ri --no-rdoc
 
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Define mountable directories.
 VOLUME ["/data"]
 

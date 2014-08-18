@@ -40,6 +40,17 @@ RUN \
   apt-get update && \
   apt-get -y install libpq-dev postgresql-client-9.3 postgresql-contrib-9.3
 
+RUN \
+  cd /tmp && \
+  wget http://download.redis.io/releases/redis-2.8.13.tar.gz && \
+  tar -xzvf redis-*.tar.gz && \
+  rm -f redis-*.tar.gz && \
+  cd redis-* && \
+  make redis-cli && \
+  make install redis-cli && \
+  cd .. && \
+  rm -rf redis-*
+
 # Define working directory.
 WORKDIR /tmp
 
@@ -58,11 +69,11 @@ RUN \
 # Install ruby gems.
 RUN gem install backup rubygems-update whenever --no-ri --no-rdoc
 
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Define working directory.
 WORKDIR /data
 
 # Define mountable directories.
 VOLUME ["/data"]
-
-# Define default command.
-CMD ["cron", "-f"]

@@ -28,6 +28,9 @@ RUN \
   sed -i -r 's/^(\s*[;]?\s*listen\.owner\s*[=].*)$/; \1/' /etc/php5/fpm/pool.d/www.conf && \
   sed -i -r 's/^(\s*[;]?\s*listen\.group\s*[=].*)$/; \1/' /etc/php5/fpm/pool.d/www.conf
 
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Define mountable directories.
 VOLUME ["/data"]
 
