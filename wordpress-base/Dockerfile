@@ -31,11 +31,11 @@ RUN \
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Define mountable directories.
-VOLUME ["/data"]
-
 # Define working directory.
 WORKDIR /data
+
+# Define mountable directories.
+VOLUME ["/data"]
 
 # Define default command.
 CMD ["php5-fpm", "-c", "/etc/php5/fpm/php.ini", "-y", "/etc/php5/fpm/php-fpm.conf", "-R"]

@@ -81,11 +81,17 @@ RUN gem install backup rubygems-update whenever --no-ri --no-rdoc
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Add the entrypoint script
+ADD ./entrypoint /opt/backups/entrypoint
+
 # Define working directory.
-WORKDIR /data
+WORKDIR /opt/backups
 
 # Define mountable directories.
 VOLUME ["/data"]
+
+# Define entrypoint script.
+ENTRYPOINT ["./entrypoint"]
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
