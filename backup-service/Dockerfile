@@ -93,5 +93,5 @@ VOLUME ["/data"]
 # Define entrypoint script.
 ENTRYPOINT ["./entrypoint"]
 
-# Use baseimage-docker's init system.
+# Define default command.
 CMD ["/sbin/my_init"]

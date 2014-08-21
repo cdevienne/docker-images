@@ -44,7 +44,7 @@ WORKDIR /data
 VOLUME ["/data"]
 
 # Define default command.
-ENTRYPOINT ["redis-commander"]
+CMD ["redis-commander"]
 
 # Expose ports
 EXPOSE 8081
