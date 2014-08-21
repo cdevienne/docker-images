@@ -21,3 +21,6 @@ WORKDIR /data
 
 # Add the script files
 ADD ./script /data/script
+
+# Set default command.
+CMD ["./script/http-connect-wait.sh"]
