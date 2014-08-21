@@ -43,8 +43,8 @@ WORKDIR /data
 # Define mountable directories.
 VOLUME ["/data"]
 
-# Define default command.
-CMD ["redis-commander"]
+# Define the entrypoint script.
+ENTRYPOINT ["redis-commander"]
 
 # Expose ports
 EXPOSE 8081

@@ -10,7 +10,8 @@ if [ "${SERVICE_URL}" == "" ]; then
   exit 1
 fi
 
+echo "Checking for service listening at ${SERVICE_URL}..."
 while curl "${SERVICE_URL}" > /dev/null 2>&1; test ${PIPESTATUS[0]} -gt 0; do
-  echo "Service at ${SERVICE_URL} not listening, waiting ${WAIT_SECONDS} seconds to try again..."
+  echo "Service not listening, waiting ${WAIT_SECONDS} seconds to try again..."
   sleep ${WAIT_SECONDS}
 done
