@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM debian:wheezy
+FROM debian:jessie
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
