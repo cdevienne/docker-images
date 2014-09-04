@@ -17,11 +17,9 @@ case "${BACKUP_COMMAND}" in
     # Extract the backup task argument and execute it
     shift
     BACKUP_TASK=$1
-    shift
     command="script/trigger-backup.sh ${BACKUP_TASK}"
     ;;
   "schedule"|"scheduler"|"cron" )
-    shift
     # Write the crontab entries from the whenever schedule
     script/create-schedule.sh
     # Call the phusion baseimage docker initialization script

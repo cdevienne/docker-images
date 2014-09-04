@@ -91,7 +91,7 @@ ADD . /opt/backups
 VOLUME ["/data"]
 
 # Define entrypoint script.
-ENTRYPOINT ["./entrypoint"]
+ENTRYPOINT ["./script/docker-entrypoint.sh"]
 
 # Define default command.
 CMD ["/sbin/my_init"]
