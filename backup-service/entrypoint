@@ -2,8 +2,8 @@
 set -e
 
 # Set environment variables
-export BACKUP_DATA_DIR="${BACKUP_DATA_DIR:-`pwd`}"
-export BACKUP_CONFIG_DIR="${BACKUP_CONFIG_DIR:-`pwd`}"
+export BACKUP_DATA_DIR="${BACKUP_DATA_DIR:-/data}"
+export BACKUP_CONFIG_DIR="${BACKUP_CONFIG_DIR:-/data}"
 export BACKUP_COMMAND="${1:-init}"
 
 # Make sure the specified directories are present
@@ -14,20 +14,21 @@ mkdir -p "${BACKUP_CONFIG_DIR}"
 BACKUP_COMMAND=$1
 case "${BACKUP_COMMAND}" in
   "trigger" )
+    # Extract the backup task argument and execute it
     shift
-    TASK=$1 && shift
-    # Execute the backup command
-    command="exec backup perform --config-file=${BACKUP_CONFIG_DIR}/config.rb --root-path=${BACKUP_DATA_DIR} --trigger ${TASK}"
+    BACKUP_TASK=$1
+    shift
+    command="script/trigger-backup.sh ${BACKUP_TASK}"
     ;;
   "schedule"|"scheduler"|"cron" )
     shift
     # Write the crontab entries from the whenever schedule
-    whenever --load-file "${BACKUP_CONFIG_DIR}/schedule.rb" > "/etc/cron.d/backups"
-    # Call the phusion baseimage init docker to start the various daemons including crond
+    script/create-schedule.sh
+    # Call the phusion baseimage docker initialization script
     command="/sbin/my_init"
     ;;
   "init" )
-    # Call the phusion baseimage init docker to start the various daemons including crond
+    # Call the phusion baseimage docker initialization script
     command="/sbin/my_init"
     ;;
   * )

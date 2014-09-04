@@ -17,10 +17,13 @@ RUN apt-get update
 RUN apt-get install -y curl wget
 
 # Define working directory.
-WORKDIR /data
+WORKDIR /opt/service-checker
 
-# Add the script files
-ADD ./script /data/script
+# Copy files in place.
+ADD . /opt/service-checker
+
+# Define mountable directories.
+VOLUME ["/data"]
 
 # Set default command.
 CMD ["./script/http-connect-wait.sh"]

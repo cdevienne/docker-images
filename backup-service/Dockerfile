@@ -81,11 +81,11 @@ RUN gem install backup rubygems-update whenever --no-ri --no-rdoc
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Add the entrypoint script
-ADD ./entrypoint /opt/backups/entrypoint
-
 # Define working directory.
 WORKDIR /opt/backups
+
+# Add the entrypoint script
+ADD . /opt/backups
 
 # Define mountable directories.
 VOLUME ["/data"]
