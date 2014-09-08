@@ -1,5 +1,5 @@
 #
-# Curl site check dockerfile
+# Service checker dockerfile
 #
 # http://github.com/marclennox/docker-images/service-checker
 #

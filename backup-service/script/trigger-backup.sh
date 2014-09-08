@@ -14,5 +14,5 @@ fi
 
 echo "Triggering backup task ${BACKUP_TASK}."
 mkdir -p "${BACKUP_DATA_DIR}/.tmp"
-exec /usr/bin/flock --exclusive --wait 300 "${BACKUP_DATA_DIR}/.tmp/trigger-backup-${BACKUP_TASK}.lockfile" \
+/usr/bin/flock --exclusive --wait 300 "${BACKUP_DATA_DIR}/.tmp/trigger-backup-${BACKUP_TASK}.lockfile" \
   backup perform --config-file="${BACKUP_CONFIG_DIR}/config.rb" --root-path="${BACKUP_DATA_DIR}" --trigger ${BACKUP_TASK}

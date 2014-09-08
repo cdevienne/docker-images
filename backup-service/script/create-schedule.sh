@@ -12,5 +12,5 @@ fi
 
 # Write the whenever schedule to the cron definition
 printf "Creating cron schedule from ${BACKUP_CONFIG_DIR}/schedule.rb... "
-exec whenever --load-file "${BACKUP_CONFIG_DIR}/schedule.rb" > "/etc/cron.d/backups"
+whenever --load-file "${BACKUP_CONFIG_DIR}/schedule.rb" > "/etc/cron.d/backups"
 echo "done."
