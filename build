@@ -2,7 +2,7 @@
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 "${SCRIPT_DIR}/backup-service/build"
+"${SCRIPT_DIR}/drone-ci/build"
 "${SCRIPT_DIR}/rails-app-base/build"
 "${SCRIPT_DIR}/redis-commander/build"
-"${SCRIPT_DIR}/service-checker/build"
 "${SCRIPT_DIR}/wordpress-base/build"
