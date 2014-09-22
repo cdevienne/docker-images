@@ -39,7 +39,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add files to the container.
 ADD . /opt/drone
-ADD script/wrap-docker.sh /usr/local/bin
+ADD script/wrap-docker.sh /usr/local/bin/
 
 # Set the working directory.
 WORKDIR /opt/drone
