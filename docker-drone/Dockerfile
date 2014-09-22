@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM debian:jessie
+FROM ubuntu:trusty
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages.
 RUN apt-get update
-RUN apt-get install -y make build-essential bzr git libsqlite3-dev mercurial sqlite3 wget
+RUN apt-get install -y apparmor curl make build-essential bzr git libsqlite3-dev mercurial sqlite3 wget
 
 # Install golang from source.
 RUN \
@@ -31,11 +31,15 @@ ENV PATH $PATH:/opt/go
 RUN wget http://downloads.drone.io/latest/drone.deb
 RUN dpkg -i drone.deb
 
+# Install Docker in Docker
+RUN curl -s https://get.docker.io/ubuntu/ | sh
+
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Add the entrypoint script
+# Add files to the container.
 ADD . /opt/drone
+ADD script/wrap-docker.sh /opt/bin
 
 # Set the working directory.
 WORKDIR /opt/drone
