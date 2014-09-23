@@ -60,7 +60,7 @@ RUN \
 
 # Compile ruby from source.
 RUN \
-  wget http://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz && \
+  wget http://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.3.tar.gz && \
   tar -xzvf ruby-*.tar.gz && \
   rm -f ruby-*.tar.gz && \
   cd ruby-* && \
