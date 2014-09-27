@@ -1,7 +1,7 @@
 #
-# Drone CI dockerfile
+# Docker drone dockerfile
 #
-# http://github.com/marclennox/docker-images/drone-ci
+# http://github.com/marclennox/docker-images/docker-drone
 #
 
 # Pull base image.

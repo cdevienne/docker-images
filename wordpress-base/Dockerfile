@@ -13,9 +13,8 @@ MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages.
-RUN \
-  apt-get update && \
-  apt-get -y install php5-fpm php5-mysql
+RUN apt-get update
+RUN apt-get -y install php5-fpm php5-mysql
 
 # Transform configurations.
 RUN \

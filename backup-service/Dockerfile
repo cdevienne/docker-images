@@ -49,6 +49,7 @@ RUN \
   apt-get update && \
   apt-get -y install libpq-dev postgresql-client-9.3 postgresql-contrib-9.3
 
+# Compile redis from official source
 RUN \
   cd /tmp && \
   wget http://download.redis.io/releases/redis-2.8.13.tar.gz && \
