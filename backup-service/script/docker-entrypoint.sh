@@ -3,7 +3,7 @@ set -e
 
 # Set environment variables
 export BACKUP_DATA_DIR="${BACKUP_DATA_DIR:-/data}"
-export BACKUP_CONFIG_DIR="${BACKUP_CONFIG_DIR:-/data}"
+export BACKUP_CONFIG_DIR="${BACKUP_CONFIG_DIR:-/etc/backups}"
 export BACKUP_COMMAND="${1:-init}"
 
 # Make sure the specified directories are present

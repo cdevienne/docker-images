@@ -2,7 +2,7 @@
 set -e
 
 # Set environment variables
-export BACKUP_CONFIG_DIR="${BACKUP_CONFIG_DIR:-/data}"
+export BACKUP_CONFIG_DIR="${BACKUP_CONFIG_DIR:-/etc/backups}"
 
 # Exit with error if BACKUP_TASK wasn't provided
 if ! [ -f "${BACKUP_CONFIG_DIR}/schedule.rb" ]; then
